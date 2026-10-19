@@ -1,0 +1,2273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GovtConnect - Government Opportunities Portal</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    height:72px;
+    background:#ffffff;
+    border-bottom:1px solid #e5e9f0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:24px;
+    font-weight:800;
+    color:#123b75;
+}
+
+.logo-icon{
+    width:40px;
+    height:40px;
+    border-radius:9px;
+    background:#123b75;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#1681c4;
+}
+
+nav{
+    display:flex;
+    gap:26px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#334155;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+nav a:hover{
+    color:#1681c4;
+}
+
+.login-button{
+    background:#123b75;
+    color:white;
+    border:none;
+    padding:11px 22px;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.login-button:hover{
+    background:#0d2c59;
+}
+
+/* ================= HOME HERO ================= */
+
+.hero{
+    padding:45px 7% 25px;
+}
+
+.hero-box{
+    min-height:330px;
+    border-radius:20px;
+    padding:55px;
+    color:white;
+    background:linear-gradient(120deg,#0c356c,#1178b8);
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-box:after{
+    content:"";
+    position:absolute;
+    width:380px;
+    height:380px;
+    border:65px solid rgba(255,255,255,.05);
+    border-radius:50%;
+    right:-150px;
+    top:-150px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:800px;
+}
+
+.gov-badge{
+    display:inline-block;
+    padding:7px 14px;
+    border-radius:20px;
+    background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.2);
+    font-size:12px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:43px;
+    line-height:1.15;
+    margin-bottom:16px;
+}
+
+.hero p{
+    color:#e5f2ff;
+    font-size:16px;
+    line-height:1.7;
+}
+
+.search-box{
+    width:650px;
+    max-width:100%;
+    background:white;
+    margin-top:25px;
+    padding:5px;
+    border-radius:8px;
+    display:flex;
+}
+
+.search-box input{
+    flex:1;
+    border:none;
+    outline:none;
+    padding:14px;
+    font-size:14px;
+}
+
+.search-box button{
+    border:none;
+    background:#1681c4;
+    color:white;
+    padding:0 25px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+    padding:30px 7% 65px;
+}
+
+.section-title{
+    margin-bottom:25px;
+}
+
+.section-title h2{
+    font-size:28px;
+    color:#172033;
+}
+
+.section-title p{
+    margin-top:7px;
+    color:#64748b;
+    font-size:14px;
+}
+
+/* ================= CATEGORY CARDS ================= */
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.category{
+    background:white;
+    position:relative;
+    user-select:none;
+    border:1px solid #e5eaf1;
+    border-radius:13px;
+    padding:25px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.category:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(15,40,70,.08);
+    border-color:#c9dff2;
+}
+
+.category-icon{
+    width:55px;
+    height:55px;
+    border-radius:11px;
+    background:#edf6ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+    margin-bottom:16px;
+}
+
+.category h3{
+    margin-bottom:9px;
+    font-size:18px;
+}
+
+.category p{
+    color:#64748b;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.category a{
+    display:block;
+    margin-top:17px;
+    color:#126aa6;
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* ================= RESULTS ================= */
+
+.results{
+    display:none;
+    padding:45px 7% 70px;
+}
+
+.results-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.results-header h2{
+    color:#123b75;
+}
+
+.back-button{
+    border:none;
+    background:#e8edf4;
+    padding:10px 18px;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+.result{
+    background:white;
+    border:1px solid #e3e8ef;
+    border-radius:12px;
+    padding:24px;
+    margin-bottom:16px;
+}
+
+.result h3{
+    color:#123b75;
+    margin-bottom:10px;
+}
+
+.result p{
+    color:#64748b;
+    margin:7px 0;
+    line-height:1.5;
+}
+
+.official{
+    display:inline-block;
+    margin-top:13px;
+    padding:10px 17px;
+    background:#123b75;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+    font-size:13px;
+}
+
+/* ================= AUTH PAGE ================= */
+
+.auth-page{
+    display:none;
+    min-height:calc(100vh - 72px);
+    padding:55px 7%;
+    align-items:center;
+    justify-content:center;
+    background:#f5f7fb;
+}
+
+.auth-container{
+    width:100%;
+    max-width:900px;
+    min-height:520px;
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:42% 58%;
+    box-shadow:0 15px 45px rgba(15,40,70,.10);
+}
+
+/* AUTH LEFT */
+
+.auth-info{
+    background:linear-gradient(150deg,#0c356c,#1178b8);
+    color:white;
+    padding:45px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.auth-info .brand{
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+.auth-info h2{
+    font-size:30px;
+    line-height:1.3;
+    margin-bottom:17px;
+}
+
+.auth-info p{
+    color:#dcecff;
+    font-size:14px;
+    line-height:1.7;
+}
+
+.auth-feature{
+    display:flex;
+    gap:10px;
+    margin-top:25px;
+}
+
+.auth-feature-icon{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:rgba(255,255,255,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.auth-feature span{
+    font-size:13px;
+    line-height:1.5;
+}
+
+/* AUTH RIGHT */
+
+.auth-form{
+    padding:55px 50px;
+}
+
+.auth-form h2{
+    font-size:29px;
+    margin-bottom:8px;
+    color:#172033;
+}
+
+.auth-form .subtitle{
+    color:#64748b;
+    font-size:14px;
+    margin-bottom:30px;
+}
+
+/* INPUT */
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group label{
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    color:#334155;
+    margin-bottom:8px;
+}
+
+.input-group input{
+    width:100%;
+    height:48px;
+    border:1px solid #d8e0e9;
+    border-radius:7px;
+    padding:0 14px;
+    outline:none;
+    font-size:14px;
+    background:#fbfcfe;
+}
+
+.input-group input:focus{
+    border-color:#1681c4;
+    background:white;
+    box-shadow:0 0 0 3px rgba(22,129,196,.08);
+}
+
+/* AUTH BUTTON */
+
+.auth-main-button{
+    width:100%;
+    height:49px;
+    border:none;
+    background:#123b75;
+    color:white;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:5px;
+}
+
+.auth-main-button:hover{
+    background:#0d2d5a;
+}
+
+.auth-secondary{
+    width:100%;
+    height:45px;
+    border:1px solid #d8e0e9;
+    background:white;
+    color:#475569;
+    border-radius:7px;
+    cursor:pointer;
+    margin-top:11px;
+}
+
+.switch{
+    text-align:center;
+    margin-top:22px;
+    color:#64748b;
+    font-size:13px;
+}
+
+.switch span{
+    color:#126aa6;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* CREATE / LOGIN */
+
+.signup-form{
+    display:none;
+}
+
+/* ================= DASHBOARD ================= */
+
+.dashboard{
+    display:none;
+    min-height:70vh;
+    padding:50px 7%;
+}
+
+.dashboard-card{
+    background:white;
+    border:1px solid #e4e9f0;
+    border-radius:15px;
+    padding:35px;
+}
+
+.dashboard-card h2{
+    color:#123b75;
+    margin-bottom:10px;
+}
+
+.dashboard-card p{
+    color:#64748b;
+    line-height:1.6;
+}
+
+.logout{
+    margin-top:25px;
+    border:none;
+    background:#dc3545;
+    color:white;
+    padding:11px 22px;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#10243e;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+footer p{
+    color:#cbd5e1;
+    font-size:13px;
+    margin:5px;
+}
+
+
+/* ================= ABOUT ADMIN & FEEDBACK ================= */
+.about-page, .feedback-page{
+    display:none;
+    padding:50px 7% 70px;
+}
+.about-card, .feedback-card{
+    max-width:950px;
+    margin:0 auto;
+    background:white;
+    border:1px solid #e3e8ef;
+    border-radius:16px;
+    padding:35px;
+    box-shadow:0 10px 30px rgba(15,40,70,.06);
+}
+.about-card h2, .feedback-card h2{
+    color:#123b75;
+    margin-bottom:12px;
+}
+.about-card p{
+    color:#64748b;
+    line-height:1.8;
+    margin-bottom:12px;
+}
+.admin-profile{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:25px;
+    align-items:center;
+    margin:25px 0;
+    padding:25px;
+    background:#f5f9ff;
+    border-radius:12px;
+}
+.admin-avatar{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background:#123b75;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:34px;
+    font-weight:800;
+}
+.admin-profile h3{color:#123b75;margin-bottom:7px;}
+.admin-profile span{color:#64748b;font-size:14px;}
+.admin-list{padding-left:20px;color:#64748b;line-height:1.9;}
+.feedback-form{max-width:650px;margin-top:20px;}
+.feedback-form label{display:block;font-size:13px;font-weight:bold;color:#334155;margin:14px 0 7px;}
+.feedback-form input,.feedback-form select,.feedback-form textarea{
+    width:100%;border:1px solid #d8e0e9;border-radius:7px;padding:12px;font-size:14px;outline:none;background:#fbfcfe;
+}
+.feedback-form textarea{min-height:130px;resize:vertical;}
+.feedback-form input:focus,.feedback-form select:focus,.feedback-form textarea:focus{border-color:#1681c4;background:white;}
+.feedback-button{margin-top:18px;border:none;background:#123b75;color:white;padding:12px 24px;border-radius:7px;font-weight:bold;cursor:pointer;}
+.feedback-message{margin-top:15px;font-size:14px;font-weight:bold;}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    nav{
+        display:none;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .auth-container{
+        grid-template-columns:1fr;
+    }
+
+    .auth-info{
+        display:none;
+    }
+
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:0 5%;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .hero{
+        padding:25px 5%;
+    }
+
+    .hero-box{
+        padding:35px 25px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+    .auth-page{
+        padding:25px 5%;
+    }
+
+    .auth-form{
+        padding:40px 25px;
+    }
+
+}
+
+/* ================= END ================= */
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="logo">
+
+<div class="logo-icon">
+G
+</div>
+
+Govt<span>Connect</span>
+
+</div>
+
+
+<nav>
+
+<a onclick="home()">Home</a>
+
+<a onclick="openCategory('schemes')">
+Schemes
+</a>
+
+<a onclick="openCategory('jobs')">
+Jobs
+</a>
+
+<a onclick="openCategory('exams')">
+Exams
+</a>
+
+<a onclick="openCategory('scholarships')">
+Scholarships
+</a>
+
+<a onclick="openCategory('notifications')">
+Notifications
+</a>
+
+<a onclick="openCategory('counselling')">
+AP Counselling
+</a>
+
+<a onclick="showAboutAdmin()">
+About Admin
+</a>
+
+</nav>
+
+
+<button
+type="button"
+class="login-button"
+onclick="showLogin()">
+
+Login
+
+</button>
+
+</header>
+
+
+
+<!-- ================= HOME ================= -->
+
+<main id="homePage">
+
+
+<section class="hero">
+
+<div class="hero-box">
+
+<div class="hero-content">
+
+<div class="gov-badge">
+🇮🇳 Government Opportunities Portal
+</div>
+
+<h1>
+Government Opportunities<br>
+in One Place
+</h1>
+
+<p>
+Find government schemes, jobs, competitive
+exams, scholarships and important notifications
+through one simple portal.
+</p>
+
+
+<div class="search-box">
+
+<input
+id="search"
+type="text"
+placeholder="Search schemes, jobs, exams, scholarships..."
+>
+
+<button type="button" onclick="searchData()">
+Search
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+
+<div class="section-title">
+
+<h2>
+Explore Government Opportunities
+</h2>
+
+<p>
+Choose a category to discover available opportunities.
+</p>
+
+</div>
+
+
+
+<div class="category-grid">
+
+
+<!-- SCHEMES -->
+
+<div
+class="category"
+onclick="openCategory('schemes')">
+
+<div class="category-icon">
+🏛️
+</div>
+
+<h3>
+Government Schemes
+</h3>
+
+<p>
+Explore welfare schemes, financial
+assistance and public benefit programmes.
+</p>
+
+<a>
+Explore Schemes →
+</a>
+
+</div>
+
+
+<!-- JOBS -->
+
+<div
+class="category"
+onclick="openCategory('jobs')">
+
+<div class="category-icon">
+💼
+</div>
+
+<h3>
+Government Jobs
+</h3>
+
+<p>
+Find recruitment opportunities from
+central and government organizations.
+</p>
+
+<a>
+Explore Jobs →
+</a>
+
+</div>
+
+
+<!-- EXAMS -->
+
+<div
+class="category"
+onclick="openCategory('exams')">
+
+<div class="category-icon">
+📝
+</div>
+
+<h3>
+Government Exams
+</h3>
+
+<p>
+UPSC, SSC, Banking, Railway, Defence
+and other competitive examinations.
+</p>
+
+<a>
+Explore Exams →
+</a>
+
+</div>
+
+
+<!-- SCHOLARSHIPS -->
+
+<div
+class="category"
+onclick="openCategory('scholarships')">
+
+<div class="category-icon">
+🎓
+</div>
+
+<h3>
+Scholarships
+</h3>
+
+<p>
+Find scholarship opportunities for
+school, college and higher education.
+</p>
+
+<a>
+Explore Scholarships →
+</a>
+
+</div>
+
+
+<!-- EDUCATION -->
+
+<div
+class="category"
+onclick="openCategory('education')">
+
+<div class="category-icon">
+📚
+</div>
+
+<h3>
+Education
+</h3>
+
+<p>
+Entrance examinations, education
+services and student opportunities.
+</p>
+
+<a>
+Explore Education →
+</a>
+
+</div>
+
+
+<!-- NOTIFICATIONS -->
+
+<div
+class="category"
+onclick="openCategory('notifications')">
+
+<div class="category-icon">
+🔔
+</div>
+
+<h3>
+Latest Notifications
+</h3>
+
+<p>
+Important government announcements,
+recruitment and public notifications.
+</p>
+
+<a>
+View Notifications →
+</a>
+
+</div>
+
+
+<!-- AP HIGHER EDUCATION & COUNSELLING -->
+
+<div
+class="category"
+onclick="openCategory('counselling')">
+
+<div class="category-icon">
+🎓
+</div>
+
+<h3>
+AP Higher Education & Counselling
+</h3>
+
+<p>
+AP EAPCET, ECET, ICET, PGECET, PGCET,
+EDCET, LAWCET, PECET and CAP information.
+</p>
+
+<a>
+View AP Counselling →
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+</main>
+
+
+
+<!-- ================= ABOUT ADMIN ================= -->
+<section class="about-page" id="aboutAdminPage">
+<div class="about-card">
+<h2>About the Admin</h2>
+<p>Welcome to GovtConnect. This portal is developed and maintained by <strong>Yaswanth Vasarla</strong> to bring government opportunities, jobs, exams, scholarships, notifications and AP higher-education counselling information together in one easy-to-use website.</p>
+<div class="admin-profile">
+<div class="admin-avatar">YV</div>
+<div>
+<h3>Yaswanth Vasarla</h3>
+<span>Founder / Developer — GovtConnect</span>
+</div>
+</div>
+<p><strong>About Me</strong></p>
+<ul class="admin-list">
+<li>Creator and developer of the GovtConnect project.</li>
+<li>Interested in web development, technology and government-opportunity information.</li>
+<li>Focused on making important information easier for students and job seekers to find.</li>
+<li>GovtConnect is designed as an information portal and users should verify important dates and applications on official government websites.</li>
+</ul>
+<button type="button" class="feedback-button" onclick="showFeedback()">Give Feedback</button>
+</div>
+</section>
+
+<!-- ================= FEEDBACK ================= -->
+<section class="feedback-page" id="feedbackPage">
+<div class="feedback-card">
+<h2>Give Your Feedback</h2>
+<p style="color:#64748b;line-height:1.7;">Your feedback helps improve GovtConnect. Tell us what you like or what should be improved.</p>
+<form class="feedback-form" onsubmit="submitFeedback(event)">
+<label for="feedbackName">Name</label>
+<input id="feedbackName" type="text" placeholder="Enter your name" required>
+<label for="feedbackEmail">Email</label>
+<input id="feedbackEmail" type="email" placeholder="Enter your email" required>
+<label for="feedbackRating">Rating</label>
+<select id="feedbackRating" required>
+<option value="">Select rating</option>
+<option value="5">★★★★★ Excellent</option>
+<option value="4">★★★★ Very Good</option>
+<option value="3">★★★ Good</option>
+<option value="2">★★ Needs Improvement</option>
+<option value="1">★ Poor</option>
+</select>
+<label for="feedbackMessage">Feedback</label>
+<textarea id="feedbackMessage" placeholder="Write your feedback here..." required></textarea>
+<button class="feedback-button" type="submit">Submit Feedback</button>
+<div id="feedbackStatus" class="feedback-message"></div>
+</form>
+<br>
+<button type="button" class="back-button" onclick="showAboutAdmin()">← Back to About Admin</button>
+</div>
+</section>
+
+<!-- ================= RESULTS ================= -->
+
+<section
+class="results"
+id="resultsPage">
+
+<div class="results-header">
+
+<h2 id="resultsTitle">
+Government Information
+</h2>
+
+<button
+type="button"
+class="back-button"
+onclick="home()">
+
+← Back Home
+
+</button>
+
+</div>
+
+
+<div id="resultContainer"></div>
+
+</section>
+
+
+
+<!-- ================= LOGIN / CREATE ================= -->
+
+<section
+class="auth-page"
+id="authPage">
+
+
+<div class="auth-container">
+
+
+<!-- LEFT -->
+
+<div class="auth-info">
+
+<div class="brand">
+🇮🇳 GOVTCONNECT
+</div>
+
+<h2>
+Your Government Opportunities Portal
+</h2>
+
+<p>
+Access government jobs, schemes,
+exams, scholarships and important
+notifications from one platform.
+</p>
+
+
+<div class="auth-feature">
+
+<div class="auth-feature-icon">
+✓
+</div>
+
+<span>
+Explore government opportunities
+easily.
+</span>
+
+</div>
+
+
+<div class="auth-feature">
+
+<div class="auth-feature-icon">
+✓
+</div>
+
+<span>
+Find official government websites.
+</span>
+
+</div>
+
+
+<div class="auth-feature">
+
+<div class="auth-feature-icon">
+✓
+</div>
+
+<span>
+Save useful information for future use.
+</span>
+
+</div>
+
+</div>
+
+
+
+<!-- RIGHT -->
+
+<div class="auth-form">
+
+
+<!-- LOGIN FORM -->
+
+<div
+id="loginForm"
+class="login-form">
+
+
+<h2>
+Welcome Back
+</h2>
+
+<p class="subtitle">
+Login to your GovtConnect account.
+</p>
+
+
+<div class="input-group">
+
+<label>
+Email Address
+</label>
+
+<input
+id="loginEmail"
+type="email"
+placeholder="Enter your email"
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+Password
+</label>
+
+<input
+id="loginPassword"
+type="password"
+placeholder="Enter your password"
+>
+
+</div>
+
+
+<button
+type="button"
+class="auth-main-button"
+onclick="login()">
+
+Login
+
+</button>
+
+
+<div class="switch">
+
+Don't have an account?
+
+<span onclick="showSignup()">
+Create Account
+</span>
+
+</div>
+
+
+<button
+type="button"
+class="auth-secondary"
+onclick="home()">
+
+← Back to Home
+
+</button>
+
+</div>
+
+
+
+<!-- CREATE ACCOUNT -->
+
+<div
+id="signupForm"
+class="signup-form">
+
+<h2>Create Your GovtConnect Account</h2>
+
+<p class="subtitle">
+Verify your email with OTP, then create your password.
+</p>
+
+<div class="input-group">
+<label>Email Address</label>
+<input
+id="signupEmail"
+type="email"
+placeholder="Enter your email"
+autocomplete="email">
+</div>
+
+<button
+type="button"
+id="sendOtpButton"
+class="auth-main-button"
+onclick="sendOTP()">
+Send OTP
+</button>
+
+<div id="otpSection" style="display:none;">
+
+<div class="input-group" style="margin-top:20px;">
+<label>Enter OTP</label>
+<input
+id="signupOTP"
+type="text"
+inputmode="numeric"
+maxlength="6"
+placeholder="Enter 6-digit OTP">
+</div>
+
+<button
+type="button"
+id="verifyOtpButton"
+class="auth-main-button"
+onclick="verifyOTP()">
+Verify OTP
+</button>
+
+</div>
+
+<div id="passwordSection" style="display:none;">
+
+<div class="input-group" style="margin-top:20px;">
+<label>Set Password</label>
+<input
+id="signupPassword"
+type="password"
+placeholder="Create your password"
+autocomplete="new-password">
+</div>
+
+<div class="input-group">
+<label>Confirm Password</label>
+<input
+id="signupConfirmPassword"
+type="password"
+placeholder="Confirm your password"
+autocomplete="new-password">
+</div>
+
+<button
+type="button"
+class="auth-main-button"
+onclick="createAccount()">
+Create Account
+</button>
+
+</div>
+
+<p
+id="signupMessage"
+style="margin-top:15px;text-align:center;font-size:13px;color:#126aa6;min-height:18px;">
+</p>
+
+<div class="switch">
+Already have an account?
+<span onclick="showLogin()">Login</span>
+</div>
+
+<button
+type="button"
+class="auth-secondary"
+onclick="home()">
+← Back to Home
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section
+class="dashboard"
+id="dashboard">
+
+<div class="dashboard-card">
+
+<h2>
+Welcome to GovtConnect 🎉
+</h2>
+
+<p id="userEmail"></p>
+
+<br>
+
+<p>
+You have successfully logged in.
+</p>
+
+<p style="margin-top:10px;">
+Your saved jobs, schemes, exams and
+scholarships will appear here.
+</p>
+
+
+<button
+type="button"
+class="logout"
+onclick="logout()">
+
+Logout
+
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<p>
+© 2026 GovtConnect
+</p>
+
+<p>
+Government Opportunities Discovery Portal
+</p>
+
+<p>
+Developed by VASARLA YASWANTH
+</p>
+
+</footer>
+
+
+
+<script>
+
+/* ================= DATA ================= */
+
+const data = {
+
+schemes:[
+
+{
+title:"PM-KISAN Scheme",
+department:"Ministry of Agriculture",
+description:"Financial support for eligible farmer families.",
+url:"https://pmkisan.gov.in/"
+},
+
+{
+title:"Pradhan Mantri Awas Yojana",
+department:"Government of India",
+description:"Government housing assistance scheme.",
+url:"https://pmaymis.gov.in/"
+},
+
+{
+title:"PM Ujjwala Yojana",
+department:"Government of India",
+description:"LPG connection assistance scheme.",
+url:"https://www.pmuy.gov.in/"
+},
+
+{
+title:"Ayushman Bharat",
+department:"Ministry of Health",
+description:"Government health coverage programme.",
+url:"https://pmjay.gov.in/"
+},
+
+{
+title:"PM Vishwakarma",
+department:"Government of India",
+description:"Support programme for eligible traditional artisans.",
+url:"https://pmvishwakarma.gov.in/"
+},
+
+{
+title:"Digital India",
+department:"Government of India",
+description:"Digital transformation and government services programme.",
+url:"https://www.digitalindia.gov.in/"
+}
+
+],
+
+
+jobs:[
+
+{
+title:"UPSC Recruitment",
+department:"Union Public Service Commission",
+description:"Civil services and other UPSC recruitment opportunities.",
+url:"https://www.upsc.gov.in/"
+},
+
+{
+title:"SSC Recruitment",
+department:"Staff Selection Commission",
+description:"Central government recruitment examinations.",
+url:"https://ssc.gov.in/"
+},
+
+{
+title:"Railway Recruitment",
+department:"Railway Recruitment Boards",
+description:"Railway recruitment and examination information.",
+url:"https://www.rrbapply.gov.in/"
+},
+
+{
+title:"National Career Service",
+department:"Ministry of Labour & Employment",
+description:"Government employment and career services.",
+url:"https://www.ncs.gov.in/"
+},
+
+{
+title:"Employment News",
+department:"Government of India",
+description:"Government recruitment advertisements.",
+url:"https://www.employmentnews.gov.in/"
+}
+
+],
+
+
+exams:[
+
+{
+title:"UPSC Civil Services Examination",
+department:"Union Public Service Commission",
+description:"Civil Services Examination for central government services.",
+url:"https://www.upsc.gov.in/"
+},
+
+{
+title:"UPSC NDA",
+department:"Union Public Service Commission",
+description:"National Defence Academy examination.",
+url:"https://www.upsc.gov.in/"
+},
+
+{
+title:"UPSC CDS",
+department:"Union Public Service Commission",
+description:"Combined Defence Services examination.",
+url:"https://www.upsc.gov.in/"
+},
+
+{
+title:"SSC CGL",
+department:"Staff Selection Commission",
+description:"Combined Graduate Level examination.",
+url:"https://ssc.gov.in/"
+},
+
+{
+title:"SSC CHSL",
+department:"Staff Selection Commission",
+description:"Combined Higher Secondary Level examination.",
+url:"https://ssc.gov.in/"
+},
+
+{
+title:"SSC MTS",
+department:"Staff Selection Commission",
+description:"Multi Tasking Staff examination.",
+url:"https://ssc.gov.in/"
+},
+
+{
+title:"SSC GD",
+department:"Staff Selection Commission",
+description:"Constable recruitment examination.",
+url:"https://ssc.gov.in/"
+},
+
+{
+title:"IBPS PO",
+department:"Institute of Banking Personnel Selection",
+description:"Probationary Officer banking examination.",
+url:"https://www.ibps.in/"
+},
+
+{
+title:"IBPS Clerk",
+department:"Institute of Banking Personnel Selection",
+description:"Clerical banking recruitment examination.",
+url:"https://www.ibps.in/"
+},
+
+{
+title:"SBI PO",
+department:"State Bank of India",
+description:"Probationary Officer recruitment examination.",
+url:"https://sbi.co.in/"
+},
+
+{
+title:"SBI Clerk",
+department:"State Bank of India",
+description:"Junior Associate recruitment examination.",
+url:"https://sbi.co.in/"
+},
+
+{
+title:"RRB NTPC",
+department:"Railway Recruitment Boards",
+description:"Non-Technical Popular Categories examination.",
+url:"https://www.rrbapply.gov.in/"
+},
+
+{
+title:"RRB Group D",
+department:"Railway Recruitment Boards",
+description:"Railway Level 1 recruitment examination.",
+url:"https://www.rrbapply.gov.in/"
+},
+
+{
+title:"RRB ALP",
+department:"Railway Recruitment Boards",
+description:"Assistant Loco Pilot recruitment examination.",
+url:"https://www.rrbapply.gov.in/"
+},
+
+{
+title:"CTET",
+department:"Central Board of Secondary Education",
+description:"Central Teacher Eligibility Test.",
+url:"https://ctet.nic.in/"
+},
+
+{
+title:"Indian Army Recruitment",
+department:"Indian Army",
+description:"Official Army recruitment information.",
+url:"https://joinindianarmy.nic.in/"
+}
+
+],
+
+
+scholarships:[
+
+{
+title:"National Scholarship Portal",
+department:"Government of India",
+description:"Central government scholarship platform.",
+url:"https://scholarships.gov.in/"
+},
+
+{
+title:"AICTE Scholarships",
+department:"AICTE",
+description:"Scholarship opportunities for eligible students.",
+url:"https://www.aicte-india.org/"
+},
+
+{
+title:"UGC Scholarships",
+department:"University Grants Commission",
+description:"Higher education scholarship information.",
+url:"https://www.ugc.gov.in/"
+},
+
+{
+title:"Post Matric Scholarships",
+department:"Government of India",
+description:"Scholarship opportunities for eligible students.",
+url:"https://scholarships.gov.in/"
+}
+
+],
+
+
+education:[
+
+{
+title:"National Scholarship Portal",
+department:"Government of India",
+description:"Scholarships and educational assistance.",
+url:"https://scholarships.gov.in/"
+},
+
+{
+title:"National Testing Agency",
+department:"Government of India",
+description:"Entrance and eligibility examination information.",
+url:"https://exams.nta.ac.in/"
+},
+
+{
+title:"AICTE",
+department:"All India Council for Technical Education",
+description:"Technical education information and services.",
+url:"https://www.aicte-india.org/"
+}
+
+],
+
+
+counselling:[
+
+{
+title:"AP EAPCET Counselling",
+department:"APSCHE",
+description:"Andhra Pradesh admissions for Engineering, Agriculture and Pharmacy through AP EAPCET.",
+url:"https://cets.apsche.ap.gov.in/"
+},
+
+{
+title:"AP ECET Counselling",
+department:"APSCHE",
+description:"Lateral-entry admissions into Engineering and Pharmacy courses through AP ECET.",
+url:"https://cets.apsche.ap.gov.in/"
+},
+
+{
+title:"AP ICET Counselling",
+department:"APSCHE",
+description:"Admissions into MBA and MCA programmes through AP ICET.",
+url:"https://cets.apsche.ap.gov.in/"
+},
+
+{
+title:"AP PGECET Counselling",
+department:"APSCHE",
+description:"Postgraduate admissions for eligible Engineering, Technology and Pharmacy candidates.",
+url:"https://cets.apsche.ap.gov.in/"
+},
+
+{
+title:"AP PGCET Counselling",
+department:"APSCHE",
+description:"Postgraduate admissions through AP PGCET for eligible candidates.",
+url:"https://cets.apsche.ap.gov.in/"
+},
+
+{
+title:"AP EDCET Counselling",
+department:"APSCHE",
+description:"B.Ed admissions through AP Education Common Entrance Test.",
+url:"https://cets.apsche.ap.gov.in/"
+},
+
+{
+title:"AP LAWCET Counselling",
+department:"APSCHE",
+description:"Admissions to eligible law programmes through AP LAWCET.",
+url:"https://cets.apsche.ap.gov.in/"
+},
+
+{
+title:"AP PECET Counselling",
+department:"APSCHE",
+description:"Admissions for eligible Physical Education programmes through AP PECET.",
+url:"https://cets.apsche.ap.gov.in/"
+},
+
+{
+title:"CAP Merit List",
+department:"APSCHE",
+description:"Check CAP special-category merit-list information when released by the relevant AP counselling authority.",
+url:"https://cets.apsche.ap.gov.in/"
+},
+
+{
+title:"APSCHE Official Counselling Portal",
+department:"Andhra Pradesh State Council of Higher Education",
+description:"Official portal for Andhra Pradesh Common Entrance Tests and higher-education admission information.",
+url:"https://cets.apsche.ap.gov.in/APSCHE/APSCHEHome.aspx"
+}
+
+],
+
+
+notifications:[
+
+{
+title:"National Portal of India",
+department:"Government of India",
+description:"Government services and official information.",
+url:"https://www.india.gov.in/"
+},
+
+{
+title:"Press Information Bureau",
+department:"Government of India",
+description:"Official government press releases.",
+url:"https://www.pib.gov.in/"
+},
+
+{
+title:"Employment News",
+department:"Government of India",
+description:"Government recruitment advertisements.",
+url:"https://www.employmentnews.gov.in/"
+},
+
+{
+title:"e-Gazette of India",
+department:"Government of India",
+description:"Official government gazette notifications.",
+url:"https://egazette.nic.in/"
+}
+
+]
+
+};
+
+
+/* ================= HOME ================= */
+
+function home(){
+
+document.getElementById("homePage").style.display="block";
+document.getElementById("resultsPage").style.display="none";
+document.getElementById("authPage").style.display="none";
+document.getElementById("dashboard").style.display="none";
+document.getElementById("aboutAdminPage").style.display="none";
+document.getElementById("feedbackPage").style.display="none";
+window.scrollTo(0,0);
+
+}
+
+
+/* ================= CATEGORY ================= */
+
+function openCategory(category){
+
+document.getElementById("homePage").style.display="none";
+
+document.getElementById("authPage").style.display="none";
+
+document.getElementById("dashboard").style.display="none";
+
+document.getElementById("resultsPage").style.display="block";
+
+
+let title="Government Information";
+
+if(category==="schemes"){
+title="Government Schemes";
+}
+
+if(category==="jobs"){
+title="Government Jobs";
+}
+
+if(category==="exams"){
+title="Government Exams";
+}
+
+if(category==="scholarships"){
+title="Government Scholarships";
+}
+
+if(category==="education"){
+title="Education Opportunities";
+}
+
+if(category==="notifications"){
+title="Government Notifications";
+}
+
+if(category==="counselling"){
+title="AP Higher Education & Counselling";
+}
+
+
+document.getElementById("resultsTitle").innerText=title;
+
+displayResults(data[category]);
+
+window.scrollTo(0,0);
+
+}
+
+
+/* ================= DISPLAY ================= */
+
+function displayResults(items){
+
+const container=
+document.getElementById("resultContainer");
+
+container.innerHTML="";
+
+
+if(!items || items.length===0){
+
+container.innerHTML=
+"<p>No information available.</p>";
+
+return;
+
+}
+
+
+items.forEach(item=>{
+
+const div=document.createElement("div");
+
+div.className="result";
+
+div.innerHTML=`
+
+<h3>${item.title}</h3>
+
+<p>
+<strong>Department:</strong>
+${item.department}
+</p>
+
+<p>
+${item.description}
+</p>
+
+<a
+class="official"
+href="${item.url}"
+target="_blank">
+
+Official Website →
+
+</a>
+
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+
+
+/* ================= ABOUT ADMIN ================= */
+function hideAllMainPages(){
+    document.getElementById("homePage").style.display="none";
+    document.getElementById("resultsPage").style.display="none";
+    document.getElementById("authPage").style.display="none";
+    document.getElementById("dashboard").style.display="none";
+    document.getElementById("aboutAdminPage").style.display="none";
+    document.getElementById("feedbackPage").style.display="none";
+}
+
+function showAboutAdmin(){
+    hideAllMainPages();
+    document.getElementById("aboutAdminPage").style.display="block";
+    window.scrollTo(0,0);
+}
+
+function showFeedback(){
+    hideAllMainPages();
+    document.getElementById("feedbackPage").style.display="block";
+    window.scrollTo(0,0);
+}
+
+function submitFeedback(event){
+    event.preventDefault();
+    const feedback={
+        name:document.getElementById("feedbackName").value.trim(),
+        email:document.getElementById("feedbackEmail").value.trim(),
+        rating:document.getElementById("feedbackRating").value,
+        message:document.getElementById("feedbackMessage").value.trim(),
+        date:new Date().toLocaleString()
+    };
+    const feedbackList=JSON.parse(localStorage.getItem("govtConnectFeedback") || "[]");
+    feedbackList.push(feedback);
+    localStorage.setItem("govtConnectFeedback", JSON.stringify(feedbackList));
+    document.getElementById("feedbackStatus").innerText="Thank you! Your feedback has been submitted successfully.";
+    document.getElementById("feedbackStatus").style.color="#15803d";
+    document.querySelector(".feedback-form").reset();
+}
+
+/* ================= SEARCH ================= */
+
+function searchData(){
+
+const query=
+document.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
+
+if(!query){
+
+alert("Please enter something to search.");
+
+return;
+
+}
+
+
+let results=[];
+
+
+Object.values(data).forEach(category=>{
+
+category.forEach(item=>{
+
+const text=
+(
+item.title+" "+
+item.department+" "+
+item.description
+).toLowerCase();
+
+
+if(text.includes(query)){
+
+results.push(item);
+
+}
+
+});
+
+});
+
+
+document.getElementById("homePage").style.display="none";
+
+document.getElementById("resultsPage").style.display="block";
+
+document.getElementById("resultsTitle").innerText=
+"Search Results";
+
+
+displayResults(results);
+
+}
+
+
+/* ================= LOGIN PAGE ================= */
+
+function showLogin(){
+
+document.getElementById("homePage").style.display="none";
+
+document.getElementById("resultsPage").style.display="none";
+
+document.getElementById("dashboard").style.display="none";
+
+document.getElementById("authPage").style.display="flex";
+
+showLoginForm();
+
+window.scrollTo(0,0);
+
+}
+
+
+/* ================= LOGIN FORM ================= */
+
+function showLoginForm(){
+
+document.getElementById("loginForm").style.display="block";
+
+document.getElementById("signupForm").style.display="none";
+
+}
+
+
+/* ================= CREATE FORM ================= */
+
+function showSignup(){
+
+document.getElementById("loginForm").style.display="none";
+
+document.getElementById("signupForm").style.display="block";
+
+}
+
+
+/* ================= OTP ACCOUNT ================= */
+
+let emailVerified = false;
+
+function setSignupMessage(message, success=false){
+    const el = document.getElementById("signupMessage");
+    if(!el) return;
+    el.innerText = message;
+    el.style.color = success ? "#15803d" : "#126aa6";
+}
+
+async function sendOTP(){
+
+    const email = document.getElementById("signupEmail").value.trim();
+
+    if(!email){
+        setSignupMessage("Please enter your email.");
+        return;
+    }
+
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+        setSignupMessage("Please enter a valid email.");
+        return;
+    }
+
+    const button = document.getElementById("sendOtpButton");
+    button.disabled = true;
+    button.innerText = "Sending OTP...";
+    setSignupMessage("Connecting to GovtConnect server...");
+
+    try{
+        const response = await fetch("http://localhost:5000/send-otp", {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({email})
+        });
+
+        const result = await response.json();
+
+        if(!response.ok || !result.success){
+            throw new Error(result.message || "Unable to send OTP.");
+        }
+
+        document.getElementById("otpSection").style.display = "block";
+        button.innerText = "OTP Sent";
+        setSignupMessage("OTP sent successfully. Check your Gmail.", true);
+        document.getElementById("signupOTP").focus();
+
+    }catch(error){
+        console.error("Send OTP error:", error);
+        button.disabled = false;
+        button.innerText = "Send OTP";
+        setSignupMessage("Cannot connect to server. Start server.js on port 5000.");
+    }
+}
+
+async function verifyOTP(){
+
+    const email = document.getElementById("signupEmail").value.trim();
+    const otp = document.getElementById("signupOTP").value.trim();
+
+    if(!otp){
+        setSignupMessage("Please enter the OTP.");
+        return;
+    }
+
+    if(!/^\d{6}$/.test(otp)){
+        setSignupMessage("OTP must contain exactly 6 digits.");
+        return;
+    }
+
+    const button = document.getElementById("verifyOtpButton");
+    button.disabled = true;
+    button.innerText = "Verifying...";
+    setSignupMessage("Verifying OTP...");
+
+    try{
+        const response = await fetch("http://localhost:5000/verify-otp", {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({email, otp})
+        });
+
+        const result = await response.json();
+
+        if(!response.ok || !result.success){
+            throw new Error(result.message || "Incorrect OTP.");
+        }
+
+        emailVerified = true;
+        document.getElementById("passwordSection").style.display = "block";
+        button.innerText = "Email Verified ✓";
+        setSignupMessage("Email verified successfully. Now create your password.", true);
+        document.getElementById("signupPassword").focus();
+
+    }catch(error){
+        console.error("Verify OTP error:", error);
+        button.disabled = false;
+        button.innerText = "Verify OTP";
+        setSignupMessage(error.message || "Unable to verify OTP.");
+    }
+}
+
+function createAccount(){
+
+    const email = document.getElementById("signupEmail").value.trim();
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword = document.getElementById("signupConfirmPassword").value;
+
+    if(!emailVerified){
+        setSignupMessage("Please verify your email first.");
+        return;
+    }
+
+    if(password.length < 6){
+        setSignupMessage("Password must contain at least 6 characters.");
+        return;
+    }
+
+    if(password !== confirmPassword){
+        setSignupMessage("Passwords do not match.");
+        return;
+    }
+
+    // Demo-only local account storage.
+    localStorage.setItem("govtEmail", email);
+    localStorage.setItem("govtPassword", password);
+
+    alert("Account created successfully!");
+    showDashboard(email);
+}
+
+/* ================= LOGIN PAGE ================= */
+
+function showLogin(){
+    document.getElementById("homePage").style.display="none";
+    document.getElementById("resultsPage").style.display="none";
+    document.getElementById("dashboard").style.display="none";
+    document.getElementById("authPage").style.display="flex";
+    showLoginForm();
+    window.scrollTo(0,0);
+}
+
+function showLoginForm(){
+    document.getElementById("loginForm").style.display="block";
+    document.getElementById("signupForm").style.display="none";
+}
+
+function showSignup(){
+    document.getElementById("loginForm").style.display="none";
+    document.getElementById("signupForm").style.display="block";
+    emailVerified = false;
+
+    const otpSection=document.getElementById("otpSection");
+    const passwordSection=document.getElementById("passwordSection");
+    const message=document.getElementById("signupMessage");
+    const sendButton=document.getElementById("sendOtpButton");
+    const verifyButton=document.getElementById("verifyOtpButton");
+
+    if(otpSection) otpSection.style.display="none";
+    if(passwordSection) passwordSection.style.display="none";
+    if(message) message.innerText="";
+    if(sendButton){
+        sendButton.disabled=false;
+        sendButton.innerText="Send OTP";
+    }
+    if(verifyButton){
+        verifyButton.disabled=false;
+        verifyButton.innerText="Verify OTP";
+    }
+}
+
+/* ================= LOGIN ================= */
+
+function login(){
+
+    const email=document.getElementById("loginEmail").value.trim();
+    const password=document.getElementById("loginPassword").value;
+
+    const savedEmail=localStorage.getItem("govtEmail");
+    const savedPassword=localStorage.getItem("govtPassword");
+
+    if(!email || !password){
+        alert("Please enter your email and password.");
+        return;
+    }
+
+    if(!savedEmail){
+        alert("No account found. Please create an account first.");
+        return;
+    }
+
+    if(email===savedEmail && password===savedPassword){
+        showDashboard(email);
+    }else{
+        alert("Incorrect email or password.");
+    }
+}
+
+/* ================= DASHBOARD ================= */
+
+function showDashboard(email){
+    document.getElementById("homePage").style.display="none";
+    document.getElementById("resultsPage").style.display="none";
+    document.getElementById("authPage").style.display="none";
+    document.getElementById("dashboard").style.display="block";
+
+    document.getElementById("userEmail").innerHTML=
+        "Logged in as: <strong>"+
+        escapeHtml(email)+
+        "</strong>";
+
+    window.scrollTo(0,0);
+}
+
+function escapeHtml(value){
+    return String(value).replace(/[&<>'"]/g, function(char){
+        return ({
+            "&":"&amp;",
+            "<":"&lt;",
+            ">":"&gt;",
+            "'":"&#39;",
+            '"':"&quot;"
+        })[char];
+    });
+}
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+home();
+
+}
+
+</script>
+
+</body>
+</html>
